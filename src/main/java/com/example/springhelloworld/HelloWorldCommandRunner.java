@@ -4,18 +4,13 @@ import com.example.springhelloworld.components.BotHelper;
 import com.example.springhelloworld.interfaces.config.Appconfig;
 import com.example.springhelloworld.services.Contents;
 import com.example.springhelloworld.services.DocumentExtractor;
+import com.example.springhelloworld.subjects.ObjectCreationAndDestruction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 
 @Component
 public class HelloWorldCommandRunner implements CommandLineRunner {
@@ -36,7 +31,8 @@ public class HelloWorldCommandRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        testBeanClassMethod();
+//        testBeanClassMethod();
+        builderLearner();
 
     }
 
@@ -66,5 +62,11 @@ public class HelloWorldCommandRunner implements CommandLineRunner {
 
         BotHelper botCleaner = (BotHelper) context.getBean("botCleaner");
         botCleaner.talk();
+    }
+
+    public void builderLearner() {
+        ObjectCreationAndDestruction objectCreationAndDestruction = new ObjectCreationAndDestruction();
+
+        objectCreationAndDestruction.simpleBuilder();
     }
 }
