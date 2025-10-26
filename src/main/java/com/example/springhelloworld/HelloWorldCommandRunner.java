@@ -4,18 +4,23 @@ import com.example.springhelloworld.components.BotHelper;
 import com.example.springhelloworld.interfaces.config.Appconfig;
 import com.example.springhelloworld.services.Contents;
 import com.example.springhelloworld.services.DocumentExtractor;
+import com.example.springhelloworld.services.MemoryLeak;
+import com.example.springhelloworld.services.StoreService;
 import com.example.springhelloworld.subjects.ObjectCreationAndDestruction;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
+@Slf4j
 public class HelloWorldCommandRunner implements CommandLineRunner {
 
-    Logger logger = LoggerFactory.getLogger(HelloWorldCommandRunner.class);
 
 //    @Value("${contentOption}")
 //    private String contentOption;
@@ -28,12 +33,24 @@ public class HelloWorldCommandRunner implements CommandLineRunner {
 
     @Autowired
     ApplicationContext context;
+    @Autowired
+    MemoryLeak memoryLeak;
+
 
     @Override
     public void run(String... args) throws Exception {
 //        testBeanClassMethod();
-        builderLearner();
+        //builderLearner();
 
+        System.out.println("hello");
+    }
+
+    public void createMemoryLeak() {
+        try {
+            memoryLeak.leak();
+        } catch (Exception e) {
+            System.exit(1);
+        }
     }
 
     public void testBeanClassMethod () {
@@ -69,4 +86,6 @@ public class HelloWorldCommandRunner implements CommandLineRunner {
 
         objectCreationAndDestruction.simpleBuilder();
     }
+
+
 }

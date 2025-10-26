@@ -1,6 +1,8 @@
 package com.example.springhelloworld.services;
 
 import com.example.springhelloworld.HelloWorldCommandRunner;
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,9 +22,9 @@ import java.util.Iterator;
 import java.util.List;
 
 @Component
+@Slf4j
 public class DocumentExtractor {
 
-    Logger logger = LoggerFactory.getLogger(DocumentExtractor.class);
 
     @Value("${input.path}")
     String inputPath;
@@ -31,8 +33,8 @@ public class DocumentExtractor {
     String outputPath;
 
     public String getDocument(String id) {
-        logger.info("Extracting some document mock");
-        logger.info("Extracting finished");
+        log.info("Extracting some document mock");
+        log.info("Extracting finished");
          return "Document here: " + id;
     }
 
