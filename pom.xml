@@ -116,6 +116,12 @@
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
 
+		<!-- Ensure Kafka client classes are available to the IDE/build -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
